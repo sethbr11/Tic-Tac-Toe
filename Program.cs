@@ -43,6 +43,24 @@ using Tic_Tac_Toe;
 internal class TicTacToeGame {
     private static void Main(string[] args) {
         TicTacToe thisOne = new TicTacToe();
-        thisOne.printBoard();
+        char[] diagonal1Board = { 'o', 'x', 'o', 'x', 'o', 'o', 'o', 'x', 'x' };
+        char[] diagonal2Board = { 'x', 'o', 'x', 'o', 'x', 'o', 'o', 'o', 'x' };
+        char[] row1Board =      { 'o', 'o', 'o', 'x', 'o', 'o', 'x', 'o', 'x' };
+        char[] row2Board =      { 'o', 'x', 'o', 'x', 'x', 'x', '-', 'o', '-' };
+        char[] row3Board =      { '-', '-', '-', 'x', 'o', 'o', 'o', 'o', 'o' };
+        char[] column1Board =   { 'o', 'x', 'x', 'o', 'x', 'x', 'o', 'x', '-' };
+        char[] column2Board =   { 'o', 'x', 'o', 'x', 'x', 'o', 'x', 'x', 'x' };
+        char[] column3Board =   { 'o', 'o', 'x', 'x', 'o', 'x', 'x', '-', 'x' };
+        char[] noWinner =       { 'o', 'x', 'o', 'x', 'o', 'x', 'x', 'o', 'x' };
+
+        Console.WriteLine(thisOne.printAndGetWinner(diagonal1Board));
+        Console.WriteLine(thisOne.printAndGetWinner(diagonal2Board));
+        Console.WriteLine(thisOne.printAndGetWinner(row1Board));
+        Console.WriteLine(thisOne.printAndGetWinner(row2Board));
+        Console.WriteLine(thisOne.printAndGetWinner(row3Board));
+        Console.WriteLine(thisOne.printAndGetWinner(column1Board));
+        Console.WriteLine(thisOne.printAndGetWinner(column2Board));
+        Console.WriteLine(thisOne.printAndGetWinner(column3Board));
+        Console.WriteLine(thisOne.printAndGetWinner(noWinner));
     }
 }
