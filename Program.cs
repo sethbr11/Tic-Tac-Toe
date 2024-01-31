@@ -40,6 +40,38 @@
 
 using Tic_Tac_Toe;
 
+
+Console.WriteLine("Welcome to our game!");
+bool gameOver = false;
+char[] gameBoard = Enumerable.Repeat(' ', 9).ToArray();
+
+while (gameOver == false)
+{
+    // Player 1 turn
+    Console.WriteLine("Player 1: which square do you want to mark? (1-9)");
+
+    int p1Choice = int.Parse(Console.ReadLine());
+
+    gameBoard[p1Choice - 1] = 'X';
+
+    Console.WriteLine(gameBoard);
+
+    Tic_Tac_Toe.setBoard();
+    Tic_Tac_Toe.printBoard();
+
+    // Player 2 turn
+    Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
+
+    int p2Choice = int.Parse(Console.ReadLine());
+
+    gameBoard[p2Choice - 1] = 'O';
+
+    Console.WriteLine(gameBoard);
+
+    Tic_Tac_Toe.setBoard();
+    Tic_Tac_Toe.printBoard();
+}
+
 internal class TicTacToeGame {
     private static void Main(string[] args) {
         TicTacToe thisOne = new TicTacToe();
