@@ -77,7 +77,9 @@ while (gameOver == false)
         gameOver = ttt.checkWinner(gameBoard);
 
         Console.WriteLine(ttt.printBoard(gameBoard));
+
+        Console.WriteLine(ttt.printAndGetWinner(gameBoard));
+
     }
 }
 
-ttt.printAndGetWinner(gameBoard);
