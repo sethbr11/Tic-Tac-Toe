@@ -57,6 +57,11 @@ namespace Tic_Tac_Toe {
         // Method to set the whole board after initiation
         public void setBoard(char[] board) { this.thisBoard = board; }
 
+        // Method to change one cell
+        //public bool setCell(char[] board, int cellNum, char playerChar) {
+        //    if (thisBoard[cellNum] == 'x' || this)
+        //}
+
         // Print Methods
         public string printBoard() { return printBoard(this.thisBoard); }
         public string printBoard(char[] board) {
@@ -124,7 +129,7 @@ namespace Tic_Tac_Toe {
             // Console.WriteLine(boardFull);
             // If still not winner, it's a tie game
             if (winner == "" && boardFull) { winner = "Tie game!"; } // Otherwise nobody won and it's a tie
-            else { winner = "The game is still going!";  }
+            else if (winner == "") { winner = "The game is still going!";  }
 
             // Return the winner
             return winner;
