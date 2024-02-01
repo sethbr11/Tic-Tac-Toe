@@ -66,9 +66,9 @@ while (gameOver == false)
 
         gameOver = ttt.checkWinner(gameBoard);
 
-        Console.WriteLine(ttt.printBoard(gameBoard));
+        Console.WriteLine(ttt.printBoard(gameBoard)); 
 
-        if (!ttt.checkWinner(gameBoard))
+        if (!ttt.checkWinner(gameBoard)) //see if player 1 wins on their turn, if not have player 2 guess
         {
 
             // Player 2 turn
