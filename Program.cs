@@ -65,21 +65,25 @@ while (gameOver == false)
 
         Console.WriteLine(ttt.printBoard(gameBoard));
 
+        if (!ttt.checkWinner(gameBoard))
+        {
 
+            // Player 2 turn
+            Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
 
-        // Player 2 turn
-        Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
+            int p2Choice = int.Parse(Console.ReadLine());
 
-        int p2Choice = int.Parse(Console.ReadLine());
+            gameBoard[p2Choice - 1] = 'o';
 
-        gameBoard[p2Choice - 1] = 'o';
+            gameOver = ttt.checkWinner(gameBoard);
 
-        gameOver = ttt.checkWinner(gameBoard);
+            Console.WriteLine(ttt.printBoard(gameBoard));
 
-        Console.WriteLine(ttt.printBoard(gameBoard));
-
-        Console.WriteLine(ttt.printAndGetWinner(gameBoard));
+        }
 
     }
 }
+
+Console.WriteLine(ttt.printAndGetWinner(gameBoard));
+
 
