@@ -57,12 +57,6 @@ namespace Tic_Tac_Toe {
         // Method to set the whole board after initiation
         public void setBoard(char[] board) { this.thisBoard = board; }
 
-        // Method to change one cell
-        public bool setCell(char[] board, int cellNum, char playerChar) {
-            if (board[cellNum] == 'x' || board[cellNum] == 'o') { return false; } // There is already a mark in that spot
-            else { board[cellNum] = playerChar; return true; } // Assign the character passed and return true
-        }
-
         // Print Methods
         public string printBoard() { return printBoard(this.thisBoard); }
         public string printBoard(char[] board) {
@@ -86,7 +80,7 @@ namespace Tic_Tac_Toe {
         public bool checkWinner() { return checkWinner(this.thisBoard); }
         public bool checkWinner(char[] board) {
             if (getWinner(board) == "The game is still going!") { return false; }
-            else { return true;  }
+            else { return true; }
         }
 
         // getWinner methods to return who won (or if there was a tie)
@@ -116,8 +110,8 @@ namespace Tic_Tac_Toe {
 
             // If still no winner, check the two diagonals
             if (winner == "") {
-                if (((board[0] == board[4] && board[4] == board[8]) || 
-                    (board[2] == board[4] && board[4] == board[6])) && 
+                if (((board[0] == board[4] && board[4] == board[8]) ||
+                    (board[2] == board[4] && board[4] == board[6])) &&
                     (board[4] == 'x' || board[4] == 'o')) { // Only 'x' or 'o' will fit criteria
                     winner = board[4].ToString() + " is the winner!";
                 }
@@ -128,7 +122,7 @@ namespace Tic_Tac_Toe {
             for (int i = 0; i < board.Length && boardFull; i++) {
                 if (board[i] != 'x' || board[i] != 'o') { boardFull = false; }
             }
-            
+
             // If still not winner, it's a tie game
             if (winner == "" && boardFull) { winner = "Tie game!"; } // Otherwise nobody won and it's a tie
             if (winner == "" && !boardFull) { winner = "The game is still going!"; }
