@@ -59,7 +59,7 @@ while (gameOver == false)
 
         int p1Choice = int.Parse(Console.ReadLine());
 
-        gameBoard[p1Choice - 1] = 'X';
+        gameBoard[p1Choice - 1] = 'x';
 
         gameOver = ttt.checkWinner(gameBoard);
 
@@ -72,7 +72,7 @@ while (gameOver == false)
 
         int p2Choice = int.Parse(Console.ReadLine());
 
-        gameBoard[p2Choice - 1] = 'O';
+        gameBoard[p2Choice - 1] = 'o';
 
         gameOver = ttt.checkWinner(gameBoard);
 

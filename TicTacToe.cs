@@ -92,7 +92,7 @@ namespace Tic_Tac_Toe {
         // getWinner methods to return who won (or if there was a tie)
         public string getWinner() { return getWinner(this.thisBoard); }
         public string getWinner(char[] board) {
-            for (int i = 0; i < board.Length; i++) { Char.ToLower(board[i]); } // Convert each character to lowercase
+            for (int i = 0; i < board.Length; i++) { board[i] = Char.ToLower(board[i]); } // Convert each character to lowercase
             string winner = "";
             int boardLength = (int)Math.Sqrt(board.Length); // Only passing 3x3 but this makes it dynamic if we want to change anything later
 
@@ -101,7 +101,6 @@ namespace Tic_Tac_Toe {
                 if ((board[0 + (i * 3)] == board[1 + (i * 3)] && board[1 + (i * 3)] == board[2 + (i * 3)])
                     && (board[0 + (i * 3)] == 'x' || board[0 + (i * 3)] == 'o')) { // Only 'x' or 'o' will fit criteria
                     winner = board[0 + (i * 3)].ToString() + " is the winner!";
-                    Console.WriteLine("Hi from the rows");
                 }
             }
 
@@ -111,7 +110,6 @@ namespace Tic_Tac_Toe {
                     if (board[0 + i] == board[3 + i] && board[3 + i] == board[6 + i]
                         && (board[0 + i] == 'x' || board[0 + i] == 'o')) { // Only 'x' or 'o' will fit criteria
                         winner = board[0 + i].ToString() + " is the winner!";
-                        Console.WriteLine("Hi from the columns");
                     }
                 }
             }
