@@ -48,7 +48,7 @@ using System.Threading.Tasks;
 
 namespace Tic_Tac_Toe {
     internal class TicTacToe {
-        private char[] thisBoard = { 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x' };
+        private char[] thisBoard = Enumerable.Repeat(' ', 9).ToArray(); // A blank board is default
 
         // Constructors
         public TicTacToe() { }
@@ -101,6 +101,7 @@ namespace Tic_Tac_Toe {
                 if ((board[0 + (i * 3)] == board[1 + (i * 3)] && board[1 + (i * 3)] == board[2 + (i * 3)])
                     && (board[0 + (i * 3)] == 'x' || board[0 + (i * 3)] == 'o')) { // Only 'x' or 'o' will fit criteria
                     winner = board[0 + (i * 3)].ToString() + " is the winner!";
+                    Console.WriteLine("Hi from the rows");
                 }
             }
 
@@ -110,14 +111,16 @@ namespace Tic_Tac_Toe {
                     if (board[0 + i] == board[3 + i] && board[3 + i] == board[6 + i]
                         && (board[0 + i] == 'x' || board[0 + i] == 'o')) { // Only 'x' or 'o' will fit criteria
                         winner = board[0 + i].ToString() + " is the winner!";
+                        Console.WriteLine("Hi from the columns");
                     }
                 }
             }
 
             // If still no winner, check the two diagonals
             if (winner == "") {
-                if ((board[0] == board[4] && board[4] == board[8]) || (board[2] == board[4] && board[4] == board[6])
-                     && (board[4] == 'x' || board[4] == 'o')) { // Only 'x' or 'o' will fit criteria
+                if (((board[0] == board[4] && board[4] == board[8]) || 
+                    (board[2] == board[4] && board[4] == board[6])) && 
+                    (board[4] == 'x' || board[4] == 'o')) { // Only 'x' or 'o' will fit criteria
                     winner = board[4].ToString() + " is the winner!";
                 }
             }
@@ -125,7 +128,7 @@ namespace Tic_Tac_Toe {
             // Check to see if the board is full
             bool boardFull = true;
             for (int i = 0; i < board.Length && boardFull; i++) {
-                if (board[i] != 'x' && board[i] != 'o') { boardFull = false; }
+                if (board[i] != 'x' || board[i] != 'o') { boardFull = false; }
             }
             
             // If still not winner, it's a tie game
