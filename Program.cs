@@ -42,15 +42,18 @@ using Tic_Tac_Toe;
 
 TicTacToe ttt = new TicTacToe();
 
+// welcomes to the game
 Console.WriteLine("Welcome to our game!");
-bool gameOver = false;
-char[] gameBoard = Enumerable.Repeat(' ', 9).ToArray();
 
+bool gameOver = false; // sets gameOver to false until a winner is chosen 
+char[] gameBoard = Enumerable.Repeat(' ', 9).ToArray(); //sets the gameboard to empty array of 9
+
+// start of the while loop
 while (gameOver == false)
 {
     if (ttt.checkWinner(gameBoard))
     {
-        gameOver = true;
+        gameOver = true; // check to see if gameOver is true or if we should continue with game
     }
     else
     {
@@ -63,23 +66,28 @@ while (gameOver == false)
 
         gameOver = ttt.checkWinner(gameBoard);
 
-        Console.WriteLine(ttt.printBoard(gameBoard));
+        Console.WriteLine(ttt.printBoard(gameBoard)); 
 
+        if (!ttt.checkWinner(gameBoard)) //see if player 1 wins on their turn, if not have player 2 guess
+        {
 
+            // Player 2 turn
+            Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
 
-        // Player 2 turn
-        Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
+            int p2Choice = int.Parse(Console.ReadLine());
 
-        int p2Choice = int.Parse(Console.ReadLine());
+            gameBoard[p2Choice - 1] = 'o';
 
-        gameBoard[p2Choice - 1] = 'o';
+            gameOver = ttt.checkWinner(gameBoard);
 
-        gameOver = ttt.checkWinner(gameBoard);
+            Console.WriteLine(ttt.printBoard(gameBoard));
 
-        Console.WriteLine(ttt.printBoard(gameBoard));
-
-        Console.WriteLine(ttt.printAndGetWinner(gameBoard));
+        }
 
     }
 }
+
+// determine the winner 
+Console.WriteLine(ttt.printAndGetWinner(gameBoard));
+
 
