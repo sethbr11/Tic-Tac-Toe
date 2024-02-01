@@ -57,8 +57,6 @@ namespace Tic_Tac_Toe {
         // Method to set the whole board after initiation
         public void setBoard(char[] board) { this.thisBoard = board; }
 
-        // Method to update individual array indexes
-
         // Print Methods
         public string printBoard() { return printBoard(this.thisBoard); }
         public string printBoard(char[] board) {
