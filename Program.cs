@@ -42,15 +42,18 @@ using Tic_Tac_Toe;
 
 TicTacToe ttt = new TicTacToe();
 
+// welcomes to the game
 Console.WriteLine("Welcome to our game!");
-bool gameOver = false;
-char[] gameBoard = Enumerable.Repeat(' ', 9).ToArray();
 
+bool gameOver = false; // sets gameOver to false until a winner is chosen 
+char[] gameBoard = Enumerable.Repeat(' ', 9).ToArray(); //sets the gameboard to empty array of 9
+
+// start of the while loop
 while (gameOver == false)
 {
     if (ttt.checkWinner(gameBoard))
     {
-        gameOver = true;
+        gameOver = true; // check to see if gameOver is true or if we should continue with game
     }
     else
     {
@@ -84,6 +87,7 @@ while (gameOver == false)
     }
 }
 
+// determine the winner 
 Console.WriteLine(ttt.printAndGetWinner(gameBoard));
 
 
