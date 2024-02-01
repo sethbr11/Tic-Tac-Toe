@@ -48,21 +48,36 @@ char[] gameBoard = Enumerable.Repeat(' ', 9).ToArray();
 
 while (gameOver == false)
 {
-    // Player 1 turn
-    Console.WriteLine("Player 1: which square do you want to mark? (1-9)");
+    if (ttt.checkWinner(gameBoard))
+    {
+        gameOver = true;
+    }
+    else
+    {
+        // Player 1 turn
+        Console.WriteLine("Player 1: which square do you want to mark? (1-9)");
 
-    int p1Choice = int.Parse(Console.ReadLine());
+        int p1Choice = int.Parse(Console.ReadLine());
 
-    gameBoard[p1Choice - 1] = 'X';
+        gameBoard[p1Choice - 1] = 'X';
 
-    Console.WriteLine(ttt.printBoard(gameBoard));
+        gameOver = ttt.checkWinner(gameBoard);
 
-    // Player 2 turn
-    Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
+        Console.WriteLine(ttt.printBoard(gameBoard));
 
-    int p2Choice = int.Parse(Console.ReadLine());
 
-    gameBoard[p2Choice - 1] = 'O';
 
-    Console.WriteLine(ttt.printBoard(gameBoard));
+        // Player 2 turn
+        Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
+
+        int p2Choice = int.Parse(Console.ReadLine());
+
+        gameBoard[p2Choice - 1] = 'O';
+
+        gameOver = ttt.checkWinner(gameBoard);
+
+        Console.WriteLine(ttt.printBoard(gameBoard));
+    }
 }
+
+ttt.printAndGetWinner(gameBoard);
