@@ -40,6 +40,7 @@
 
 using Tic_Tac_Toe;
 
+TicTacToe ttt = new TicTacToe();
 
 Console.WriteLine("Welcome to our game!");
 bool gameOver = false;
@@ -54,10 +55,7 @@ while (gameOver == false)
 
     gameBoard[p1Choice - 1] = 'X';
 
-    Console.WriteLine(gameBoard);
-
-    Tic_Tac_Toe.setBoard();
-    Tic_Tac_Toe.printBoard();
+    Console.WriteLine(ttt.printBoard(gameBoard));
 
     // Player 2 turn
     Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
@@ -66,15 +64,5 @@ while (gameOver == false)
 
     gameBoard[p2Choice - 1] = 'O';
 
-    Console.WriteLine(gameBoard);
-
-    Tic_Tac_Toe.setBoard();
-    Tic_Tac_Toe.printBoard();
-}
-
-internal class TicTacToeGame {
-    private static void Main(string[] args) {
-        TicTacToe thisOne = new TicTacToe();
-        thisOne.printBoard();
-    }
+    Console.WriteLine(ttt.printBoard(gameBoard));
 }

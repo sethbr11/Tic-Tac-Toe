@@ -76,6 +76,13 @@ namespace Tic_Tac_Toe {
             return print;
         }
 
+        // Method to check if there is a winner on the board
+        public bool checkWinner() { return checkWinner(this.thisBoard); }
+        public bool checkWinner(char[] board) {
+            if (getWinner(board) == "The game is still going") { return false; }
+            else { return true;  }
+        }
+
         // getWinner methods to return who won (or if there was a tie)
         public string getWinner() { return getWinner(this.thisBoard); }
         public string getWinner(char[] board) {
@@ -109,8 +116,15 @@ namespace Tic_Tac_Toe {
                 }
             }
 
+            // Check to see if the board is full
+            bool boardFull = true;
+            for (int i = 0; i < board.Length && boardFull; i++) {
+                if (board[i] != 'x' || board[i] != 'o') { boardFull = false; }
+            }
+
             // If still not winner, it's a tie game
-            if (winner == "") { winner = "Tie game!"; } // Otherwise nobody won and it's a tie
+            if (winner == "" && boardFull) { winner = "Tie game!"; } // Otherwise nobody won and it's a tie
+            else { winner = "The game is still going!";  }
 
             // Return the winner
             return winner;
