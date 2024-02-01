@@ -118,12 +118,6 @@ namespace Tic_Tac_Toe {
 
         // Print board AND get winner
         public string printAndGetWinner() { return printAndGetWinner(this.thisBoard); }
-        public string printAndGetWinner(char[] board) {
-            string returnString = "";
-
-            returnString += printBoard(board) + "\n" + getWinner(board) + "\n";
-
-            return returnString;
-        }
+        public string printAndGetWinner(char[] board) { return printBoard(board) + "\n" + getWinner(board) + "\n"; }
     }
 }
