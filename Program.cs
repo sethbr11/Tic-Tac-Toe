@@ -54,6 +54,7 @@ internal class TicTacToeGame {
         char[] noWinner =       { 'o', 'x', 'o', 'x', 'o', 'x', 'x', 'o', 'x' };
 
         Console.WriteLine(thisOne.printAndGetWinner(diagonal1Board));
+        Console.WriteLine(thisOne.printAndGetWinner(diagonal1Board));
         Console.WriteLine(thisOne.printAndGetWinner(diagonal2Board));
         Console.WriteLine(thisOne.printAndGetWinner(row1Board));
         Console.WriteLine(thisOne.printAndGetWinner(row2Board));

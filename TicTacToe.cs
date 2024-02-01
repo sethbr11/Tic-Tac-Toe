@@ -48,14 +48,14 @@ using System.Threading.Tasks;
 
 namespace Tic_Tac_Toe {
     internal class TicTacToe {
-        private char[] thisBoard = { 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x' };
+        private char[] thisBoard = Enumerable.Repeat(' ', 9).ToArray(); // A blank board is default
 
         // Constructors
-        public TicTacToe() {}
+        public TicTacToe() { }
         public TicTacToe(char[] board) { this.thisBoard = board; }
 
-        // Method to set the board after initiation
-        public void setBoard(char[] board) { this.thisBoard = board;  }
+        // Method to set the whole board after initiation
+        public void setBoard(char[] board) { this.thisBoard = board; }
 
         // Print Methods
         public string printBoard() { return printBoard(this.thisBoard); }
@@ -65,10 +65,10 @@ namespace Tic_Tac_Toe {
             int boardLength = (int)Math.Sqrt(board.Length); // Only passing 3x3 but this makes it dynamic if we want to change anything later
 
             // Iterate through each character, create the grid
-            for (int i=0; i<board.Length; i++) {
-                if ( (i + 1) % boardLength == 0 && i != board.Length - 1)   { endLine = $"\n--+---+--\n"; } // End of line
-                else if (i != board.Length - 1 )                            { endLine = " | "; } // Between characters same line
-                else                                                        { endLine = " "; } // Very last character
+            for (int i = 0; i < board.Length; i++) {
+                if ((i + 1) % boardLength == 0 && i != board.Length - 1) { endLine = $"\n--+---+--\n"; } // End of line
+                else if (i != board.Length - 1) { endLine = " | "; } // Between characters same line
+                else { endLine = " "; } // Very last character
                 print += board[i].ToString() + endLine; // Appen to the return string
             };
 
@@ -76,17 +76,24 @@ namespace Tic_Tac_Toe {
             return print;
         }
 
+        // Method to check if there is a winner on the board
+        public bool checkWinner() { return checkWinner(this.thisBoard); }
+        public bool checkWinner(char[] board) {
+            if (getWinner(board) == "The game is still going!") { return false; }
+            else { return true; }
+        }
+
         // getWinner methods to return who won (or if there was a tie)
         public string getWinner() { return getWinner(this.thisBoard); }
         public string getWinner(char[] board) {
-            for (int i = 0; i < board.Length; i++) { Char.ToLower(board[i]); } // Convert each character to lowercase
+            for (int i = 0; i < board.Length; i++) { board[i] = Char.ToLower(board[i]); } // Convert each character to lowercase
             string winner = "";
             int boardLength = (int)Math.Sqrt(board.Length); // Only passing 3x3 but this makes it dynamic if we want to change anything later
 
             // Check each row for a winner
             for (int i = 0; i < boardLength; i++) {
                 if ((board[0 + (i * 3)] == board[1 + (i * 3)] && board[1 + (i * 3)] == board[2 + (i * 3)])
-                    && (board[0 + (i* 3)] == 'x' || board[0 + (i * 3)] == 'o')) { // Only 'x' or 'o' will fit criteria
+                    && (board[0 + (i * 3)] == 'x' || board[0 + (i * 3)] == 'o')) { // Only 'x' or 'o' will fit criteria
                     winner = board[0 + (i * 3)].ToString() + " is the winner!";
                 }
             }
@@ -103,14 +110,22 @@ namespace Tic_Tac_Toe {
 
             // If still no winner, check the two diagonals
             if (winner == "") {
-                if ((board[0] == board[4] && board[4] == board[8]) || (board[2] == board[4] && board[4] == board[6])
-                     && (board[4] == 'x' || board[4] == 'o')) { // Only 'x' or 'o' will fit criteria
+                if (((board[0] == board[4] && board[4] == board[8]) ||
+                    (board[2] == board[4] && board[4] == board[6])) &&
+                    (board[4] == 'x' || board[4] == 'o')) { // Only 'x' or 'o' will fit criteria
                     winner = board[4].ToString() + " is the winner!";
                 }
             }
-            
+
+            // Check to see if the board is full
+            bool boardFull = true;
+            for (int i = 0; i < board.Length && boardFull; i++) {
+                if (board[i] != 'x' || board[i] != 'o') { boardFull = false; }
+            }
+
             // If still not winner, it's a tie game
-            if (winner == "") { winner = "Tie game!"; } // Otherwise nobody won and it's a tie
+            if (winner == "" && boardFull) { winner = "Tie game!"; } // Otherwise nobody won and it's a tie
+            if (winner == "" && !boardFull) { winner = "The game is still going!"; }
 
             // Return the winner
             return winner;
