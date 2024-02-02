@@ -60,7 +60,14 @@ while (gameOver == false)
         // Player 1 turn
         Console.WriteLine("Player 1: which square do you want to mark? (1-9)");
 
-        int p1Choice = int.Parse(Console.ReadLine());
+        int p1Choice = 0;
+
+        // while loop to check if they put in a valid input for player 1
+        if (!int.TryParse(Console.ReadLine(), out p1Choice) || p1Choice < 1 || p1Choice > 9)
+        {
+            Console.WriteLine("Invalid input. Please enter a valid number between 1 and 9.");
+            continue; // Continue with the next iteration of the loop
+        }
 
         gameBoard[p1Choice - 1] = 'x';
 
@@ -74,7 +81,15 @@ while (gameOver == false)
             // Player 2 turn
             Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
 
-            int p2Choice = int.Parse(Console.ReadLine());
+            int p2Choice = 0;
+
+            // while loop to check if they put in a valid input for player 2
+            while (!int.TryParse(Console.ReadLine(), out p2Choice) || p2Choice < 1 || p2Choice > 9)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number between 1 and 9.");
+                Console.WriteLine(ttt.printBoard(gameBoard));
+                Console.WriteLine("Player 2: which square do you want to mark? (1-9)");
+            }
 
             gameBoard[p2Choice - 1] = 'o';
 
